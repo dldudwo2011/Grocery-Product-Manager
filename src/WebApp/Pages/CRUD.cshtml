@@ -1,0 +1,84 @@
+﻿@page "{productId?}"
+@model WebApp.Pages.CRUDModel
+@{
+}
+
+<h1>Manage Product</h1>
+
+<form method="post" enctype="multipart/form-data">
+
+    @if (Model.product == null)
+    {
+        <input type="hidden" value="0" asp-for="product.ProductId" />
+    }
+    else
+    {
+        <input type="hidden" asp-for="product.ProductId" />
+    }
+
+    @if (Model.ErrorMessage != null)
+    {
+        <p style="color:red; font-weight: bold;">@Model.ErrorMessage</p>
+    }
+
+    <div style="margin-bottom:40px;display:flex">
+        <label for="description" style="width:10rem;margin-top:0">Description</label>
+        <input style="width:20rem" type="text" id="description" asp-for="product.Description" />
+    </div>
+
+    <div style="margin-bottom:40px; display:flex">
+        <label for="price" style="width: 10rem; margin-top: 0">Price</label>
+        <input style="width:7rem" type="number" step=".01" id="price" asp-for="product.Price" />
+    </div>
+
+    <div style="margin-bottom:40px; display:flex">
+        <label for="discount" style="width: 10rem; margin-top: 0">Discount</label>
+        <input style="width:7rem" type="number" step=".01" id="discount" asp-for="product.Discount" />
+
+    </div>
+
+    <div style="margin-bottom:40px; display:flex">
+        <label for="unit-size" style="width: 10rem; margin-top: 0">Unit Size</label>
+        <input style="width:7rem" type="text" id="unit-size" asp-for="product.UnitSize" />
+    </div>
+
+    <div style="margin-bottom:40px; display:flex">
+        <label style="width: 10rem; margin-top: 0">Category</label>
+        <select style="width:15rem; margin-right:15px;" asp-items="Model.categories" asp-for="product.CategoryId">
+            <option value="0">[Pick a Category]</option>
+        </select>
+
+    </div>
+
+    <div style="margin-bottom:40px; display: flex">
+        <label style="width: 10rem; margin-top: 0">Taxable</label>
+        <input style="align-self:center; margin-right:0.5rem" id="Taxable" type="checkbox" asp-for="product.Taxable" />
+        <p>Subject to Sales Tax</p>
+    </div>
+
+    <div style="margin-bottom:40px; display: flex">
+        <label style="width: 10rem; margin-top: 0">Photo</label>
+        <input style="align-self:center; margin-right:0.5rem" id="photo" type="file" accept="image/*" asp-for="photo" />
+    </div>
+
+    <!-- added ""Model.redirected" because I wanted the user to continue adding after post-get-redirect. -->
+    @if (Model.product == null || Model.redirected == true)
+    {
+        <div style="margin-bottom:40px; display:flex">
+            <button type="submit" asp-page-handler="Add" style="margin-right:10px;">Add</button>
+            <button type="submit" asp-page-handler="Update" style="margin-right:10px;" disabled>Update</button>
+            <button type="submit" asp-page-handler="Delete" onclick="return confirm('Are you sure you want to delete this product?')" style="margin-right:10px;" disabled>Delete</button>
+            <button type="submit" asp-page-handler="Cancel" onclick="window.location.href='/Query'">Cancel</button>
+        </div>
+    }
+
+    else
+    {
+        <div style="margin-bottom:40px; display:flex">
+            <button type="submit" asp-page-handler="Add" style="margin-right:10px;" disabled>Add</button>
+            <button type="submit" asp-page-handler="Update" style="margin-right:10px;">Update</button>
+            <button type="submit" asp-page-handler="Delete" onclick="return confirm('Are you sure you want to delete this product?')" style="margin-right:10px;">Delete</button>
+            <button type="submit" asp-page-handler="Cancel" onclick="window.location.href='/Query'">Cancel</button>
+        </div>
+    }
+</form>

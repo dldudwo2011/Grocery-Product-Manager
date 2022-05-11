@@ -1,0 +1,24 @@
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.csproj.AssemblyReference.cache
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.AssemblyInfoInputs.cache
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.AssemblyInfo.cs
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.csproj.CoreCompileInputs.cache
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.deps.json
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.dll
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\ref\Backend.dll
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.pdb
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.dll
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\ref\Backend.dll
+C:\Users\skske\Desktop\Git repos\DMIT2018\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.pdb
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.deps.json
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.dll
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\bin\Debug\net5.0\Backend.pdb
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.csproj.AssemblyReference.cache
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.AssemblyInfoInputs.cache
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.AssemblyInfo.cs
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.csproj.CoreCompileInputs.cache
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.dll
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\refint\Backend.dll
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\Backend.pdb
+C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\Backend\obj\Debug\net5.0\ref\Backend.dll

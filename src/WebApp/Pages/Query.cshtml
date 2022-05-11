@@ -1,0 +1,269 @@
+﻿@page
+@model WebApp.Pages.QueryModel
+@{
+}
+
+<h1 style="font-weight:bold">Products by Category</h1>
+
+<div style="margin-bottom:40px; display:flex">
+    <form id="Grocery" method="get" style="display:flex">
+        <label style="margin-right:15px;margin-top:0">Category</label>
+        <select style="width:17rem; margin-right:15px;" asp-items="Model.categories" asp-for="selectedCategory">
+            <option value="0">[Pick a Category]</option>
+        </select>
+
+        <a href="#" onclick="submit()" style="text-decoration: underline;align-self:center">Search</a>
+    </form>
+    <a href="#" onclick="window.location.href='/CRUD'" style="margin-left: 3rem; text-decoration: underline; align-self: center">New Product</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width:50rem; text-align:start">Description</th>
+            <th style="width:40rem; text-align:start">Photo</th>
+            <th style="width:40rem; text-align:start">Price - $</th>
+            <th style="width:50rem; text-align:start">Sale Price - $</th>
+            <th style="width:40rem; text-align:start">Discount - $</th>
+            <th style="width:40rem; text-align:start">Unit Size</th>
+            <th style="width:40rem; text-align:start">Taxable</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            var photo = product.Photo == null ? "none" : Convert.ToBase64String(product.Photo);
+            var price = product.Price.ToString();
+            var salePrice = product.SalePrice.ToString();
+            var Discount = product.Discount == 0 ? "none" : product.Discount.ToString();
+
+        <tr>
+            <td><a style="text-decoration:underline" asp-page="/CRUD" asp-route-productId="@product.ProductId">@product.Description</a></td>
+            <td>
+                @if (photo == "none") @photo
+           
+
+                else
+                {
+                   <img src="data:image/png;base64, @photo" />
+                }
+       
+            </td>
+            <td>@price.Substring(0, salePrice.Length - 2)</td>
+            <td>@salePrice.Substring(0, salePrice.Length - 2)</td>
+            <td>
+                @if (Discount == "none") @Discount
+                
+
+                else
+                {
+                    @Discount.Substring(0, Discount.Length - 2)
+                }
+            </td>
+            <td>@product.UnitSize</td>
+            <td>
+                @if (@product.Taxable == true)
+                {
+                    <input type="checkbox" checked />
+                }
+                else
+                {
+                    <input type="checkbox" />
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr colspan="4">
+            <td style="width: 200rem; text-align: start">
+                @{
+                    int currentPage = Model.Paging.CurrentState.CurrentPage;
+                    int lastPage = Model.Paging.LastPage;
+
+                    WebApp.Helper.PageRef firstPage = new(Model.Paging.FirstPage, Model.Paging.FirstPageText);
+                    WebApp.Helper.PageRef previousPage = new(Model.Paging.PreviousPage, Model.Paging.PreviousPageText);
+                    WebApp.Helper.PageRef nextPage = new(Model.Paging.NextPage, Model.Paging.NextPageText);
+                    WebApp.Helper.PageRef lastPage2 = new(Model.Paging.LastPage, Model.Paging.LastPageText);
+
+                    if (lastPage < 10)
+                    {
+                        <a title="Page @firstPage.Page" asp-page="/Query" asp-route-currentpage="@firstPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@firstPage.Text</a>
+                        <a title="Page @previousPage.Page" asp-page="/Query" asp-route-currentpage="@previousPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@previousPage.Text</a>
+
+                        for (var counter = 1; counter <= lastPage; counter++)
+                        {
+
+                            if (counter == currentPage)
+                            {
+                                foreach (var pageRef in Model.Paging)
+                                {
+                                    if (pageRef.Page == currentPage && pageRef.Text == currentPage.ToString())
+                                    {
+                                        <b style="text-decoration: underline">@pageRef.Text</b>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                WebApp.Helper.PageRef ref1 = new(counter, counter.ToString());
+
+                                <a style="text-decoration: underline" title="Page @ref1.Page" asp-page="/Query" asp-route-currentpage="@ref1.Page" asp-route-selectedCategory="@Model.selectedCategory">@ref1.Text</a>
+                            }
+                        }
+                        <a title="Page @nextPage.Page" asp-page="/Query" asp-route-currentpage="@nextPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@nextPage.Text</a>
+                        <a title="Page @lastPage2.Page" asp-page="/Query" asp-route-currentpage="@lastPage2.Page" asp-route-selectedCategory="@Model.selectedCategory">@lastPage2.Text</a>
+
+                    }
+                    else if (lastPage % 10 != 0)
+                    {
+                        int specialNumber = Model.Paging.LastPage - Model.Paging.LastDigit + 1;
+
+                        if (((currentPage % 10) == 1) && (currentPage != specialNumber))
+                        {
+                            foreach (var pageRef in Model.Paging)
+                            {
+                                if (pageRef == Model.Paging.CurrentPage) 
+                                {
+                                    if (int.TryParse(pageRef.Text, out int result))
+                                    {
+                                        <b style="text-decoration: underline">@pageRef.Text</b>
+                                    }
+                                }
+                                else
+                                {
+                                    if (int.TryParse(pageRef.Text, out int result))
+                                    {
+                                        <a style="text-decoration: underline" title="Page @pageRef.Page" asp-page="/Query" asp-route-currentpage="@pageRef.Page" asp-route-selectedCategory="@Model.selectedCategory">@pageRef.Text</a>
+                                    }
+                                    else
+                                    {
+                                        <a title="Page @pageRef.Page" asp-page="/Query" asp-route-currentpage="@pageRef.Page" asp-route-selectedCategory="@Model.selectedCategory">@pageRef.Text</a>
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            int first;
+                            int last;
+
+                            if (currentPage < 10)
+                            {
+                                first = 1;
+                                last = 10;
+                            }
+                            else if (currentPage % 10 != 0 && currentPage > 10 && currentPage < specialNumber)
+                            {
+                                first = (currentPage - (currentPage % 10)) + 1;
+                                last = first + 9;
+                            }
+                            else if (currentPage >= specialNumber)
+                            {
+                                first = specialNumber;
+                                last = lastPage;
+                            }
+                            else
+                            {
+                                first = currentPage - 9;
+                                last = currentPage;
+                            }
+                            <a title="Page @firstPage.Page" asp-page="/Query" asp-route-currentpage="@firstPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@firstPage.Text</a>
+                            <a title="Page @previousPage.Page" asp-page="/Query" asp-route-currentpage="@previousPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@previousPage.Text</a>
+
+                            for (var counter = first; counter <= last; counter++)
+                            {
+
+                                if (counter == currentPage)
+                                {
+                                    foreach (var pageRef in Model.Paging)
+                                    {
+                                        if (pageRef.Page == currentPage && pageRef.Text == currentPage.ToString())
+                                        {
+                                            <b style="text-decoration: underline">@pageRef.Text</b>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    WebApp.Helper.PageRef ref1 = new(counter, counter.ToString());
+
+                                    <a style="text-decoration: underline" title="Page @ref1.Page" asp-page="/Query" asp-route-currentpage="@ref1.Page" asp-route-selectedCategory="@Model.selectedCategory">@ref1.Text</a>
+                                }
+                            }
+                            <a title="Page @nextPage.Page" asp-page="/Query" asp-route-currentpage="@nextPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@nextPage.Text</a>
+                            <a title="Page @lastPage2.Page" asp-page="/Query" asp-route-currentpage="@lastPage2.Page" asp-route-selectedCategory="@Model.selectedCategory">@lastPage2.Text</a>
+                        }
+                    }
+                    else
+                    {
+                        if ((currentPage % 10) == 1)
+                        {
+                            foreach (var pageRef in Model.Paging)
+                            {
+                                if (pageRef == Model.Paging.CurrentPage)
+                                {
+                                    <b style="text-decoration: underline">@pageRef.Text</b>
+                                }
+                                else
+                                {
+                                    <a style="text-decoration: underline" title="Page @pageRef.Page" asp-page="/Query" asp-route-currentpage="@pageRef.Page" asp-route-selectedCategory="@Model.selectedCategory">@pageRef.Text</a>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            int first;
+                            int last;
+
+                            if (currentPage < 10)
+                            {
+                                first = 1;
+                                last = 10;
+                            }
+                            else if (currentPage % 10 != 0 && currentPage > 10)
+                            {
+                                first = (currentPage - (currentPage % 10)) + 1;
+                                last = first + 9;
+                            }
+                            else
+                            {
+                                first = currentPage - 9;
+                                last = currentPage;
+                            }
+
+                            <a title="Page @firstPage.Page" asp-page="/Query" asp-route-currentpage="@firstPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@firstPage.Text</a>
+                            <a title="Page @previousPage.Page" asp-page="/Query" asp-route-currentpage="@previousPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@previousPage.Text</a>
+
+                            for (var counter = first; counter <= last; counter++)
+                            {
+
+                                if (counter == currentPage)
+                                {
+                                    foreach (var pageRef in Model.Paging)
+                                    {
+                                        if (pageRef.Page == currentPage && pageRef.Text == currentPage.ToString())
+                                        {
+                                            <b style="text-decoration: underline">@pageRef.Text</b>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    WebApp.Helper.PageRef ref1 = new(counter, counter.ToString());
+
+                                    <a style="text-decoration: underline" title="Page @ref1.Page" asp-page="/Query" asp-route-currentpage="@ref1.Page" asp-route-selectedCategory="@Model.selectedCategory">@ref1.Text</a>
+                                }
+                            }
+                            <a title="Page @nextPage.Page" asp-page="/Query" asp-route-currentpage="@nextPage.Page" asp-route-selectedCategory="@Model.selectedCategory">@nextPage.Text</a>
+                            <a title="Page @lastPage2.Page" asp-page="/Query" asp-route-currentpage="@lastPage2.Page" asp-route-selectedCategory="@Model.selectedCategory">@lastPage2.Text</a>
+                        }
+                    }
+                }
+
+
+                (@Model.Paging.TotalItemCount items - Page x/@Model.Paging.PageCount)
+            </td>
+        </tr>
+    </tfoot>
+</table>

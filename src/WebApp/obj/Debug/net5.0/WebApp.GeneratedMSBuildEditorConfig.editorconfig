@@ -1,0 +1,10 @@
+is_global = true
+build_property.TargetFramework = net5.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApp
+build_property.ProjectDir = C:\Users\skske\Desktop\Nait courses\done fall term - 2021\DMIT2018\Assignment&Test\DMIT2018-git\sep-2021-e01-take-home-exercises-skske1432\src\WebApp\
