@@ -9,6 +9,6 @@ Please follow these steps to see my work working.
 
 This project demonstrates my ability to:
 
-1. Query items from the database.
-2. CRUD functionality with the database.
-3. Implement pagination.
+- Query items from the database.
+- CRUD functionality with the database.
+- Implement pagination.
