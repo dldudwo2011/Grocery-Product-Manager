@@ -1,4 +1,4 @@
-# Query-and-CRUD
+# Grocery Product Manager
 
 .NET5 - Query and CRUD functionality
 
