@@ -2,6 +2,8 @@
 
 .NET5 - Query and CRUD functionality
 
+This is a virtual website made with .NET 5 to perform Query and CRUD operations on a grocery company.
+
 Please follow these steps to see my work working.
 
 1. Import the bacpac file (Grocery list) in your SQL Server Studio Management.
